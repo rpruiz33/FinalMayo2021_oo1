@@ -36,8 +36,13 @@ public Pasajero(int idPasajero, String apellido, String nombre, int dni) {
 	Nombre = nombre;
 	Dni = dni;
 }
-
-
+@Override
+public String toString() {
+	return "Pasajero [idPasajero=" + idPasajero + ", Apellido=" + Apellido + ", Nombre=" + Nombre + ", Dni=" + Dni
+			+ "]";
+}
+/*agregarEstadia(LocalDate fechaVenta, Pasajero pasajero, LocalDate checkIn, int cantNoches, int
+cantPlazas):boolean*/
 
 
 }
