@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +41,47 @@ public boolean agregarEstadia(LocalDate fechaVenta, Pasajero pasajero, LocalDate
 		id=ventas.get(ventas.size()-1).getIdVenta()+1;
 	}
 	
-	return ventas.add(new Estadia(id,  pasajero,fechaVenta,  checkIn,  cantNoches, cantPlazas));
+	return  ventas.add(new Estadia(id,  pasajero,fechaVenta,  checkIn,  cantNoches, cantPlazas));
+}
+/*agregarSpa(LocalDate fechaVenta, Pasajero pasajero, LocalDate fecha, LocalTime hora, int
+minutos) : boolean*/
+
+public boolean agregarSpa (LocalDate fechaVenta, Pasajero pasajero, LocalDate fecha, LocalTime hora, int minutos) {
+int id=1;
+if(ventas.size()>0) {
+	id=ventas.get(ventas.size()-1).getIdVenta()+1;
+}
+
+return  ventas.add(new Spa( id,  pasajero,fechaVenta,  fecha,  hora,  minutos));
+}
+
+/*traerVenta(int idVenta):Venta //con todos sus atributos*/
+public Venta traerVenta(int idVenta) {
+	Venta venta=null;
+	int i=0;
+	while(i<ventas.size()&&venta==null) {
+	if(ventas.get(i).getIdVenta()==idVenta) {
+	venta=ventas.get(i);
+	}
+	i++;
+	}
+	return venta;
+	}
+/*List<Spa> traerSpa(LocalDate dia, LocalTime hora) // trae todos los objetos Spa que se
+encuentran activas (se encuentran en el Spa) para ese día y la hora se encuentra entre hora
+entrada y salida al spa inclusive*/
+public List<Spa> traerSpa(LocalDate dia, LocalTime hora){
+	List<Spa> SPA=new ArrayList<Spa>();
+	for(int i=0;i<ventas.size();i++) {
+		if((ventas.get(i) instanceof Spa)) {
+		SPA.add(new Spa(ventas.get(i).getIdVenta(), ventas.get(i).getPasajero(), ventas.get(i).getFecha(),dia, hora, hora.getMinute()));
+			
+		}
+	}
+	return SPA;
+	
+}
 }
 
 
-}
+

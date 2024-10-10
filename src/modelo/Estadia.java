@@ -3,6 +3,7 @@ package modelo;
 import java.time.LocalDate;
 
 public class Estadia extends Venta {
+
 private LocalDate chekIn;
 private int cantNoches;
 private int  CantDePlazas;
@@ -13,6 +14,7 @@ public void setChekIn(LocalDate chekIn) throws Exception{
 	if(chekIn.isBefore(fecha)){
 		 throw new Exception("la fecha es menor");
 	}
+	this.chekIn=chekIn;
 }
 public int getCantNoches() {
 	return cantNoches;
@@ -33,6 +35,10 @@ public Estadia(int idVenta, Pasajero pasajero, LocalDate fecha, LocalDate chekIn
 	CantDePlazas = cantDePlazas;
 }
 
-
+@Override
+public String toString() {
+	return "\nEstadia [chekIn=" + chekIn + ", cantNoches=" + cantNoches + ", CantDePlazas=" + CantDePlazas
+			+ ", idVenta=" + idVenta + ", pasajero=" + pasajero + ", fecha=" + fecha + "]";
+}
 
 }

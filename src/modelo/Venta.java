@@ -12,6 +12,11 @@ public Venta(int idVenta, Pasajero pasajero, LocalDate fecha) {
 	this.pasajero = pasajero;
 	this.fecha = fecha;
 }
+@Override
+public String toString() {
+	return "Venta [idVenta=" + idVenta + ", pasajero=" + pasajero + ", fecha=" + fecha + ", getIdVenta()="
+			+ getIdVenta() + ", getPasajero()=" + getPasajero() + ", getFecha()=" + getFecha() + "]";
+}
 public int getIdVenta() {
 	return idVenta;
 }
