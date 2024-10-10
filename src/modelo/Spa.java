@@ -36,11 +36,14 @@ public Spa(int idVenta, Pasajero pasajero, LocalDate fecha, LocalDate fecha2, Lo
 }
 
 public LocalTime salidaSpa() {
-	return LocalTime.of(getHora().getHour(),(getHora().getMinute()+ getMinutos()/60));
+    // Sumar los minutos a la hora de entrada
+    LocalTime horaSalida = getHora().plusMinutes(getMinutos());
+    return horaSalida;
 }
+
 @Override
 public String toString() {
-	return "Spa [fecha2=" + fecha2 + ", hora=" + hora + ", minutos=" + minutos + ", idVenta=" + idVenta + ", pasajero="
+	return "\nSpa [fecha2=" + fecha2 + ", hora=" + hora + ", minutos=" + minutos + ", idVenta=" + idVenta + ", pasajero="
 			+ pasajero + ", fecha=" + fecha + ", salidaSpa()=" + salidaSpa() + "]";
 }
 

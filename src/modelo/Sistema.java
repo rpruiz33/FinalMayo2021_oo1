@@ -72,11 +72,20 @@ encuentran activas (se encuentran en el Spa) para ese día y la hora se encuentr
 entrada y salida al spa inclusive*/
 public List<Spa> traerSpa(LocalDate dia, LocalTime hora){
 	List<Spa> SPA=new ArrayList<Spa>();
+	Spa venta=null;
 	for(int i=0;i<ventas.size();i++) {
-		if((ventas.get(i) instanceof Spa)) {
-		SPA.add(new Spa(ventas.get(i).getIdVenta(), ventas.get(i).getPasajero(), ventas.get(i).getFecha(),dia, hora, hora.getMinute()));
+		 if (ventas.get(i) instanceof Spa) {
+		
+		venta=(Spa)ventas.get(i);
+		 
+        if (venta.getFecha().equals(dia) && 
+                (hora.equals(venta.getHora()) || hora.equals(venta.salidaSpa()) || 
+                 (hora.isAfter(venta.getHora()) && hora.isBefore(venta.salidaSpa())))) {
+			
+		SPA.add(venta);
 			
 		}
+	}
 	}
 	return SPA;
 	
