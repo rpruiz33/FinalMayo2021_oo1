@@ -36,7 +36,7 @@ public Spa(int idVenta, Pasajero pasajero, LocalDate fecha, LocalDate fecha2, Lo
 }
 
 public LocalTime salidaSpa() {
-    // Sumar los minutos a la hora de entrada
+ 
     LocalTime horaSalida = getHora().plusMinutes(getMinutos());
     return horaSalida;
 }
